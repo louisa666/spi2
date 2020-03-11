@@ -1,0 +1,55 @@
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+using namespace std;
+int main ()
+
+{
+int a=2;
+int p1=1;
+int p2=a*p1;
+int arr_p2=0;
+int p3=2*a*p1;
+int arr_p3=0;
+int arr=0;
+srand(time(NULL));
+
+while(a<50)
+{
+*(&p2)=a*p1;
+*(&p3)=2*a*p1;
+//cout<<"p2: "<<p2<<"\n";
+//cout<<"p3: "<<p3<<"\n";
+while(arr<33)
+{
+int number= 1+rand()%100;
+//cout<<"number: "<<number<<" ";
+
+if ((number>p1)&&(number<=p2))
+{arr_p2++;
+ arr++;
+ //cout<<"p2: "<<p2<<" ";
+ } 
+else if ((number>p2)&&(number<=p3))
+{ arr_p3++;
+ arr++;
+ //cout<<"p3: "<<p3;
+ }
+else {arr++;}
+if (number==p1)
+{
+cout<<"\n";
+cout<<"a: "<<a<<" arr_p2: "<<arr_p2<<" "<<"arr_p3: "<<arr_p3<<"\n";
+break;
+}}
+*(&a)=*(&a)+1;
+arr=0;
+arr_p2=0;
+arr_p3=0;
+}
+
+cout<<"\n";
+
+
+return 0;
+}
